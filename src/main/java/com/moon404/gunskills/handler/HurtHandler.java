@@ -1,6 +1,5 @@
 package com.moon404.gunskills.handler;
 
-import com.moon404.gunskills.GunSkills;
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsItems;
 import com.moon404.gunskills.message.ShowDamageMessage;
@@ -13,13 +12,10 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
 
-@Mod.EventBusSubscriber(modid = GunSkills.MODID, value = Dist.DEDICATED_SERVER)
 public class HurtHandler
 {
     @SubscribeEvent

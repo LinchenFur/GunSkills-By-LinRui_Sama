@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = GunSkills.MODID, bus = Bus.FORGE)
-public class GunBattleRoyaleCommands
+public class GunSkillsCommands
 {
     @SubscribeEvent
     public static void registerCommands(RegisterCommandsEvent event)
