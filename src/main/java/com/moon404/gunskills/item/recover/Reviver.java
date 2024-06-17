@@ -51,7 +51,7 @@ public class Reviver extends RecoverItem
                 CommandSourceStack sourceStack = new CommandSourceStack(CommandSource.NULL, player.getPosition(1), player.getRotationVector(), player.serverLevel(), 2, null, null, server, null);
                 sourceStack = sourceStack.withEntity(player);
                 try {
-                    dispatcher.execute("function gbr:game/revive_user", sourceStack);
+                    dispatcher.execute("function gunskills:game/revive_user", sourceStack);
                 } catch (CommandSyntaxException e) {
                     e.printStackTrace();
                 }
