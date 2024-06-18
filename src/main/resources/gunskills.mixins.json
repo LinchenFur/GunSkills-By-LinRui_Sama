@@ -10,7 +10,9 @@
         "PlayerModelMixin"
     ],
     "client": [
-        "GlowingMixin"
+        "GlowingMixin",
+        "GuiMixin",
+        "ForgeGuiMixin"
     ],
     "injectors": {
         "defaultRequire": 1

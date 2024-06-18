@@ -2,6 +2,7 @@ package com.moon404.gunskills;
 
 import com.moon404.gunskills.handler.HurtHandler;
 import com.moon404.gunskills.handler.ItemTossHandler;
+import com.moon404.gunskills.handler.KnockbackHandler;
 import com.moon404.gunskills.handler.LoginHandler;
 import com.moon404.gunskills.handler.PlayerTickHandler;
 import com.moon404.gunskills.init.GunSkillsConfigs;
@@ -47,6 +48,7 @@ public class GunSkills
         MinecraftForge.EVENT_BUS.register(ItemTossHandler.class);
         MinecraftForge.EVENT_BUS.register(LoginHandler.class);
         MinecraftForge.EVENT_BUS.register(PlayerTickHandler.class);
+        MinecraftForge.EVENT_BUS.register(KnockbackHandler.class);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
