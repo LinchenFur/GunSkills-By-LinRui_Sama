@@ -4,13 +4,16 @@ import com.moon404.gunskills.handler.HurtHandler;
 import com.moon404.gunskills.handler.ItemTossHandler;
 import com.moon404.gunskills.handler.LoginHandler;
 import com.moon404.gunskills.handler.PlayerTickHandler;
+import com.moon404.gunskills.init.GunSkillsConfigs;
 import com.moon404.gunskills.init.GunSkillsBlocks;
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.init.GunSkillsItems;
 import com.moon404.gunskills.message.C2SSlide;
+import com.moon404.gunskills.message.ChangeItemMessage;
 import com.moon404.gunskills.message.S2CSlide;
 import com.moon404.gunskills.message.ShowDamageMessage;
+import com.moon404.gunskills.struct.WheelItemList;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -49,7 +52,7 @@ public class GunSkills
         MinecraftForge.EVENT_BUS.register(this);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GunSkillsConfigs.SPEC, "GunSkillsConfig.toml");
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event)
@@ -59,6 +62,8 @@ public class GunSkills
             ShowDamageMessage.register();
             C2SSlide.register();
             S2CSlide.register();
+            ChangeItemMessage.register();
+            WheelItemList.init();
         });
     }
 }
