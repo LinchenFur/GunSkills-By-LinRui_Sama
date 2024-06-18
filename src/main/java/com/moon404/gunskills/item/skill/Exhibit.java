@@ -5,6 +5,7 @@ import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.struct.ClassType;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 public class Exhibit extends SkillItem
@@ -12,6 +13,9 @@ public class Exhibit extends SkillItem
     public Exhibit(Properties properties)
     {
         super(properties, ClassType.SCOUT);
+        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
+        tooltips.add(Component.literal("对落地点半径为 4 范围的玩家"));
+        tooltips.add(Component.literal("给与 5 秒发光效果"));
     }
 
     @Override

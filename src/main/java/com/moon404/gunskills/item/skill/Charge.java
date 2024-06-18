@@ -3,6 +3,7 @@ package com.moon404.gunskills.item.skill;
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 public class Charge extends SkillItem
@@ -10,6 +11,8 @@ public class Charge extends SkillItem
     public Charge(Properties properties)
     {
         super(properties, ClassType.SUPPORT);
+        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
+        tooltips.add(Component.literal("所有友方玩家获得25进化点数"));
     }
 
     @Override

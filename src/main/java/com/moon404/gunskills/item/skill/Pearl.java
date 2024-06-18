@@ -4,6 +4,7 @@ import com.moon404.gunskills.entity.PearlEntity;
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -13,6 +14,9 @@ public class Pearl extends SkillItem
     public Pearl(Properties properties)
     {
         super(properties, ClassType.ROGUE);
+        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
+        tooltips.add(Component.literal("瞬移到目的地点，有明显的粒子效果"));
+        tooltips.add(Component.literal("落地前玩家只能够缓慢移动"));
     }
 
     @Override

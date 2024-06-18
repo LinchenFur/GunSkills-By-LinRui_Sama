@@ -17,6 +17,8 @@ public class Glow extends SkillItem
     public Glow(Properties properties)
     {
         super(properties, ClassType.SCOUT);
+        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
+        tooltips.add(Component.literal("使 32 格范围内的敌对玩家发光 3 秒"));
     }
 
     @Override

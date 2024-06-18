@@ -3,6 +3,7 @@ package com.moon404.gunskills.item.skill;
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Inventory;
@@ -14,6 +15,11 @@ public class EnterVoid extends SkillItem
     public EnterVoid(Properties properties)
     {
         super(properties, ClassType.ROGUE);
+        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
+        tooltips.add(Component.literal("获得 5 秒隐身与失明"));
+        tooltips.add(Component.literal("切换物品会提前结束效果"));
+        tooltips.add(Component.literal("生效时如果背包有空位"));
+        tooltips.add(Component.literal("会自动将手持物品放入背包"));
     }
 
     private static int getFreeSlot(Inventory inventory)

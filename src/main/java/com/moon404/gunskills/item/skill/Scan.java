@@ -11,6 +11,9 @@ public class Scan extends SkillItem
     public Scan(Properties properties)
     {
         super(properties, ClassType.SCOUT);
+        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
+        tooltips.add(Component.literal("得到距离最近敌人的距离和坐标"));
+        tooltips.add(Component.literal("自己不会被暴露，敌人也不会知道"));
     }
 
     @Override
