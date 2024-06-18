@@ -14,6 +14,7 @@ public class MedKit extends RecoverItem
     public MedKit(Item.Properties properties)
     {
         super(properties);
+        tooltips.add(Component.literal("完全恢复生命"));
     }
 
     public int getUseDuration(ItemStack stack)

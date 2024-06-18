@@ -1,5 +1,6 @@
 package com.moon404.gunskills.item.recover;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -11,6 +12,8 @@ public class ShieldBoost extends RecoverItem
     public ShieldBoost(Item.Properties properties)
     {
         super(properties);
+        tooltips.add(Component.literal("提供 25 护盾进化经验"));
+        tooltips.add(Component.literal("使用此物品造成的护盾进化会恢复等量护盾值"));
     }
 
     @Override

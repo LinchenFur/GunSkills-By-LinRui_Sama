@@ -14,6 +14,7 @@ public class Syringe extends RecoverItem
     public Syringe(Item.Properties properties)
     {
         super(properties);
+        tooltips.add(Component.literal("恢复 4 点生命"));
     }
 
     public int getUseDuration(ItemStack stack)

@@ -20,6 +20,7 @@ public class Reviver extends RecoverItem
     public Reviver(Item.Properties properties)
     {
         super(properties);
+        tooltips.add(Component.literal("复活所有阵亡队友"));
     }
 
     public int getUseDuration(ItemStack stack)

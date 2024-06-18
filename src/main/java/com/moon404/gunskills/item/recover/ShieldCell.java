@@ -14,6 +14,7 @@ public class ShieldCell extends RecoverItem
     public ShieldCell(Item.Properties properties)
     {
         super(properties);
+        tooltips.add(Component.literal("恢复 4 点护盾"));
     }
 
     public int getUseDuration(ItemStack stack)

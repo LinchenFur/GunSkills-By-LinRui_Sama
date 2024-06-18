@@ -14,6 +14,7 @@ public class ShieldBattery extends RecoverItem
     public ShieldBattery(Item.Properties properties)
     {
         super(properties);
+        tooltips.add(Component.literal("完全恢复护盾"));
     }
 
     public int getUseDuration(ItemStack stack)

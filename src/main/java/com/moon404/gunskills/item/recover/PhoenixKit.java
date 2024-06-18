@@ -14,6 +14,7 @@ public class PhoenixKit extends RecoverItem
     public PhoenixKit(Item.Properties properties)
     {
         super(properties);
+        tooltips.add(Component.literal("完全恢复护盾和生命"));
     }
 
     public int getUseDuration(ItemStack stack)
