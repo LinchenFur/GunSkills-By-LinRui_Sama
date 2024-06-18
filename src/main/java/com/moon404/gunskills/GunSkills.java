@@ -8,6 +8,8 @@ import com.moon404.gunskills.init.GunSkillsBlocks;
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.message.C2SSlide;
+import com.moon404.gunskills.message.S2CSlide;
 import com.moon404.gunskills.message.ShowDamageMessage;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -55,6 +57,8 @@ public class GunSkills
         event.enqueueWork(() ->
         {
             ShowDamageMessage.register();
+            C2SSlide.register();
+            S2CSlide.register();
         });
     }
 }

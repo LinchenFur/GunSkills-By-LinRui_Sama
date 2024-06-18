@@ -5,10 +5,12 @@
     "minVersion": "0.8",
     "refmap": "gunskills.refmap.json",
     "mixins": [
+        "EntityMixin",
         "PlayerMixin",
-        "GlowingMixin"
+        "PlayerModelMixin"
     ],
     "client": [
+        "GlowingMixin"
     ],
     "injectors": {
         "defaultRequire": 1
