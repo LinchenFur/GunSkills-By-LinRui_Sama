@@ -2,6 +2,7 @@ package com.moon404.gunskills.item.recover;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -23,6 +24,7 @@ public abstract class RecoverItem extends Item
     public RecoverItem(Item.Properties properties)
     {
         super(properties);
+        tooltips = new ArrayList<>();
     }
 
     public abstract int getUseDuration(ItemStack stack);
