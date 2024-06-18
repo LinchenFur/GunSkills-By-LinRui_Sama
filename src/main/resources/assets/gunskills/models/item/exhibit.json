@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "gunskills:items/exhibit"
+		"layer0": "gunskills:item/exhibit"
 	}
 }

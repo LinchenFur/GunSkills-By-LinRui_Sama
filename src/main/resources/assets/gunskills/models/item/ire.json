@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "gunskills:items/ire"
+		"layer0": "gunskills:item/ire"
 	}
 }

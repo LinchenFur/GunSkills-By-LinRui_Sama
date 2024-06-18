@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "gunskills:items/shield_battery"
+		"layer0": "gunskills:item/shield_battery"
 	}
 }
