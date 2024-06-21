@@ -1,5 +1,6 @@
 package com.moon404.gunskills.init;
 
+import com.moon404.gunskills.ChooseCommand;
 import com.moon404.gunskills.ClassCommand;
 import com.moon404.gunskills.GunSkills;
 
@@ -15,5 +16,6 @@ public class GunSkillsCommands
     public static void registerCommands(RegisterCommandsEvent event)
     {
         ClassCommand.register(event.getDispatcher());
+        ChooseCommand.register(event.getDispatcher());
     }
 }
