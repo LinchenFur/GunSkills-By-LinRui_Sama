@@ -1,7 +1,10 @@
 package com.moon404.gunskills.message;
 
+import java.util.HashMap;
+
 import com.moon404.gunskills.GunSkills;
 import com.moon404.gunskills.mixin.GlowingMixin;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,6 +20,14 @@ public class GlowMessage
     private static int index = 1;
 
     public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(GunSkills.MODID, "glow"), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
+
+    public static HashMap<String, Long> glowing = new HashMap<>();
+
+    public static long getTime()
+    {
+        Minecraft mc = Minecraft.getInstance();
+        return mc.level.getGameTime();
+    }
 
     public static void register()
     {
@@ -37,14 +48,14 @@ public class GlowMessage
         {
             ctx.get().enqueueWork(() ->
             {
-                long end = GlowingMixin.getTime() + content.duration;
-                if (!GlowingMixin.glowing.containsKey(content.name))
+                long end = getTime() + content.duration;
+                if (!glowing.containsKey(content.name))
                 {
-                    GlowingMixin.glowing.put(content.name, end);
+                    glowing.put(content.name, end);
                 }
-                else if (GlowingMixin.glowing.get(content.name) < end)
+                else if (glowing.get(content.name) < end)
                 {
-                    GlowingMixin.glowing.put(content.name, end);
+                    glowing.put(content.name, end);
                 }
             });
             ctx.get().setPacketHandled(true);

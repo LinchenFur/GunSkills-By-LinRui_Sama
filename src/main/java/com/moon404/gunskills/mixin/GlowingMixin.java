@@ -1,11 +1,10 @@
 package com.moon404.gunskills.mixin;
 
-import java.util.HashMap;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
+import com.moon404.gunskills.message.GlowMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -23,14 +22,6 @@ public class GlowingMixin
     public LocalPlayer player;
     @Shadow
     public Options options;
-
-    public static HashMap<String, Long> glowing = new HashMap<>();
-
-    public static long getTime()
-    {
-        Minecraft mc = Minecraft.getInstance();
-        return mc.level.getGameTime();
-    }
 
     public boolean isAdventure(LocalPlayer localPlayer)
     {
@@ -57,17 +48,17 @@ public class GlowingMixin
             if (p_91315_ instanceof Player target && isAdventure(this.player))
             {
                 String name = target.getScoreboardName();
-                if (!glowing.containsKey(name))
+                if (!GlowMessage.glowing.containsKey(name))
                 {
                     return false;
                 }
-                else if (glowing.get(name) >= getTime())
+                else if (GlowMessage.glowing.get(name) >= GlowMessage.getTime())
                 {
                     return true;
                 }
                 else
                 {
-                    glowing.remove(name);
+                    GlowMessage.glowing.remove(name);
                     return false;
                 }
             }
