@@ -24,6 +24,10 @@ public class ForgeGuiMixin extends GuiMixin
     @Shadow(remap = false)
     public int leftHeight;
 
+    /**
+     * @author Moon-404
+     * @reason 用于渲染护甲值
+     */
     @Overwrite(remap = false)
     public void renderHealth(int width, int height, GuiGraphics guiGraphics)
     {

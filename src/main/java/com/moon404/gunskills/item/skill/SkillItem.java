@@ -38,7 +38,8 @@ public class SkillItem extends Item
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity)
     {
-        if (entity.level().isClientSide) return false;
+        Level level = entity.level();
+        if (level.isClientSide) return false;
         if (entity.onGround()) return onLand(entity);
         return false;
     }
