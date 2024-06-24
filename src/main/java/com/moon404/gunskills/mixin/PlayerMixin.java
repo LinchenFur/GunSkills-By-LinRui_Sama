@@ -14,6 +14,10 @@ public class PlayerMixin extends EntityMixin
     @Shadow
     public int experienceLevel;
 
+    /**
+     * @author Moon-404
+     * @reason 等级与进化护甲相关
+     */
     @Overwrite
     public int getXpNeededForNextLevel()
     {
@@ -23,12 +27,20 @@ public class PlayerMixin extends EntityMixin
         return Integer.MAX_VALUE;
     }
 
+    /**
+     * @author Moon-404
+     * @reason 玩家死亡不掉落经验
+     */
     @Overwrite
     public int getExperienceReward()
     {
         return 0;
     }
 
+    /**
+     * @author Moon-404
+     * @reason 滑铲动作适配
+     */
     @Overwrite
     public boolean isStayingOnGroundSurface()
     {

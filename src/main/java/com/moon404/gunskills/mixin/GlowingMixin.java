@@ -41,6 +41,10 @@ public class GlowingMixin
         return playerinfo != null && playerinfo.getGameMode() == GameType.ADVENTURE;
     }
 
+    /**
+     * @author Moon-404
+     * @reason 修改发光的显示逻辑
+     */
     @Overwrite
     public boolean shouldEntityAppearGlowing(Entity p_91315_)
     {

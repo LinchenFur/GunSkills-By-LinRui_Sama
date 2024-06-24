@@ -15,6 +15,10 @@ public class DataMixin
 {
     @Shadow
     private Entity entity;
+    /**
+     * @author Moon-404
+     * @reason 允许data指令修改玩家数据
+     */
     @Overwrite
     public void setData(CompoundTag pOther)
     {
