@@ -57,6 +57,7 @@ public class SilenceEntity extends ThrowableItemProjectile
                 player.addEffect(new MobEffectInstance(GunSkillsEffects.SILENCE.get(), 100));
                 player.hurt(player.damageSources().playerAttack(this.user), 4);
             }
+            this.user.displayClientMessage(Component.literal("静默命中敌人数：" + players.size()), true);
         }
         this.kill();
     }

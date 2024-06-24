@@ -12,6 +12,7 @@ import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.init.GunSkillsItems;
 import com.moon404.gunskills.message.C2SSlide;
 import com.moon404.gunskills.message.ChangeItemMessage;
+import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.message.S2CSlide;
 import com.moon404.gunskills.message.ShowDamageMessage;
 import com.moon404.gunskills.struct.WheelItemList;
@@ -66,6 +67,7 @@ public class GunSkills
             S2CSlide.register();
             ChangeItemMessage.register();
             WheelItemList.init();
+            GlowMessage.register();
         });
     }
 }

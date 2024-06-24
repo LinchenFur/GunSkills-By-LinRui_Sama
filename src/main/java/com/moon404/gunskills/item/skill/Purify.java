@@ -28,6 +28,7 @@ public class Purify extends SkillItem
             if (offhandStack.getItem() == GunSkillsItems.PURIFY.get() && !player.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(player) == ClassType.SUPPORT)
             {
                 offhandStack.setCount(offhandStack.getCount() - 1);
+                player.displayClientMessage(Component.literal("净化粉阻挡了一次技能"), true);
                 return true;
             }
         }

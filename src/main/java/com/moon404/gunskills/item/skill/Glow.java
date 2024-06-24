@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.moon404.gunskills.init.GunSkillsEffects;
+import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
@@ -44,7 +45,9 @@ public class Glow extends SkillItem
             for (Player target : players)
             {
                 target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60));
+                GlowMessage.sendToTeam(player.getTeam(), target, 60);
             }
+            player.displayClientMessage(Component.literal("扫描敌人数：" + players.size()), true);
         }
         return true;
     }

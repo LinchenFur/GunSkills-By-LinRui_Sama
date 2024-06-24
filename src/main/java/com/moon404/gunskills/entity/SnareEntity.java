@@ -57,6 +57,7 @@ public class SnareEntity extends ThrowableItemProjectile
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2));
                 player.hurt(player.damageSources().playerAttack(this.user), 4);
             }
+            this.user.displayClientMessage(Component.literal("电弧陷阱命中敌人数：" + players.size()), true);
         }
         this.kill();
     }

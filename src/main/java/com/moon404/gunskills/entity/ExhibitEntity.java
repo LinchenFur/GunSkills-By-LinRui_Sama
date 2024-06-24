@@ -6,7 +6,7 @@ import java.util.List;
 import org.joml.Vector3f;
 import com.moon404.gunskills.init.GunSkillsItems;
 import com.moon404.gunskills.item.skill.Purify;
-
+import com.moon404.gunskills.message.GlowMessage;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -55,7 +55,9 @@ public class ExhibitEntity extends ThrowableItemProjectile
             for (Player player : players)
             {
                 player.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100));
+                GlowMessage.sendToTeam(this.user.getTeam(), player, 100);
             }
+            this.user.displayClientMessage(Component.literal("一览无余命中敌人数：" + players.size()), true);
         }
         this.kill();
     }

@@ -2,6 +2,7 @@ package com.moon404.gunskills.handler;
 
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.message.ShowDamageMessage;
 import com.moon404.gunskills.struct.ClassType;
 import com.moon404.gunskills.struct.DamageInfo;
@@ -56,6 +57,10 @@ public class HurtHandler
             if (itemStack.getItem() == GunSkillsItems.IRE.get() && !event.getEntity().hasEffect(MobEffects.GLOWING) && !from.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(from) == ClassType.SCOUT)
             {
                 event.getEntity().addEffect(new MobEffectInstance(MobEffects.GLOWING, 100));
+                if (event.getEntity() instanceof Player target)
+                {
+                    GlowMessage.sendToTeam(from.getTeam(), target, 100);
+                }
                 itemStack.setCount(itemStack.getCount() - 1);
             }
         }
