@@ -29,7 +29,7 @@ public class ClientTickHandler
 {
     public static int holding;
     public static int duration;
-    private static int pingcd;
+    private static int pingcd = 0;
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent event)
@@ -48,10 +48,9 @@ public class ClientTickHandler
         else duration = 0;
         if (duration > 5) WheelGui.activate(list);
 
-        if (pingcd > 0) pingcd--;
-        else if (pingcd == 0 && GunSkillsKeyMappings.PING_KEY.consumeClick())
+        if (pingcd == 0 && GunSkillsKeyMappings.PING_KEY.consumeClick())
         {
-            pingcd = 5;
+            pingcd = 20;
             ClientLevel level = mc.level;
             LocalPlayer player = mc.player;
             Vec3 start = player.getEyePosition();
@@ -65,9 +64,10 @@ public class ClientTickHandler
                 pingInfo.x = blockPos.getX();
                 pingInfo.y = blockPos.getY();
                 pingInfo.z = blockPos.getZ();
-                pingInfo.t = 100;
+                pingInfo.t = 60;
                 C2SPing.INSTANCE.sendToServer(pingInfo);
             }
         }
+        if (pingcd > 0) pingcd--;
     }
 }
