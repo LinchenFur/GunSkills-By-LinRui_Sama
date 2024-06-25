@@ -28,5 +28,6 @@
     "item.gunskills.boot": "反冲鞋",
     "effect.gunskills.silence": "被沉默与禁疗",
     "itemGroup.gunskills": "GunSkills",
-    "button.categories.gunskills": "GunSkills"
+    "button.categories.gunskills": "GunSkills",
+    "key.gunskills.ping": "发送信号"
 }

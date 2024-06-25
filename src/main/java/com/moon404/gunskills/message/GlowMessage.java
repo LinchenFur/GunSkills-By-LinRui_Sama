@@ -3,7 +3,6 @@ package com.moon404.gunskills.message;
 import java.util.HashMap;
 
 import com.moon404.gunskills.GunSkills;
-import com.moon404.gunskills.mixin.GlowingMixin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
