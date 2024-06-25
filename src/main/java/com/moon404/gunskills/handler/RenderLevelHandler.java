@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.blaze3d.vertex.PoseStack.Pose;
 import com.moon404.gunskills.GunSkills;
 import com.moon404.gunskills.struct.PingInfo;
 
@@ -26,25 +25,19 @@ import net.minecraftforge.fml.common.Mod;
 public class RenderLevelHandler
 {
     public static float curTick;
-    private static Pose pose;
     public static List<PingInfo> pingInfos = new ArrayList<>();
 
     @SubscribeEvent
     public static void onRenderLevel(RenderLevelStageEvent event)
     {
-        if (event.getStage() == Stage.AFTER_TRIPWIRE_BLOCKS)
-            pose = event.getPoseStack().last();
-        if (event.getStage() != Stage.AFTER_LEVEL) return;
+        if (event.getStage() != Stage.AFTER_TRIPWIRE_BLOCKS) return;
         curTick = event.getRenderTick() + event.getPartialTick();
 
         VertexConsumer vertexConsumer = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderType.lines());
         Camera camera = event.getCamera();
         Vec3 pos = camera.getPosition();
                 
-        PoseStack poseStack = new PoseStack();
-        poseStack.last().pose().set(pose.pose());
-        poseStack.last().normal().set(pose.normal());
-
+        PoseStack poseStack = event.getPoseStack();
         Iterator<PingInfo> iterator = pingInfos.iterator();
         while (iterator.hasNext())
         {
