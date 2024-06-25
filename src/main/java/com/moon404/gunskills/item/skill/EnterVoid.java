@@ -60,8 +60,8 @@ public class EnterVoid extends SkillItem
                 inventory.removeItem(itemStack);
             }
         }
-        player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 100));
-        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100));
+        player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 100, 0, false, false, true));
+        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 0, false, false, true));
         return true;
     }
 }

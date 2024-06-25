@@ -54,7 +54,7 @@ public class ExhibitEntity extends ThrowableItemProjectile
         {
             for (Player player : players)
             {
-                player.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100));
+                player.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0, false, false, true));
                 GlowMessage.sendToTeam(this.user.getTeam(), player, 100);
             }
             this.user.displayClientMessage(Component.literal("一览无余命中敌人数：" + players.size()), true);

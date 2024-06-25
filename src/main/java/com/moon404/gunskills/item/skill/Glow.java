@@ -44,7 +44,7 @@ public class Glow extends SkillItem
         {
             for (Player target : players)
             {
-                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60));
+                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false, true));
                 GlowMessage.sendToTeam(player.getTeam(), target, 60);
             }
             player.displayClientMessage(Component.literal("扫描敌人数：" + players.size()), true);

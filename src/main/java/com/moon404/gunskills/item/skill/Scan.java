@@ -48,7 +48,7 @@ public class Scan extends SkillItem
             String message = "最近的敌人在 " + (int)mindis + " 格外";
             Component component = Component.literal(message);
             player.displayClientMessage(component, true);
-            nearest.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60));
+            nearest.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false, false));
             GlowMessage.sendToTeam(player.getTeam(), nearest, 60);
         }
         return true;

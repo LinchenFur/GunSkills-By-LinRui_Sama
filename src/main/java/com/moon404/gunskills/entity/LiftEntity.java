@@ -36,7 +36,7 @@ public class LiftEntity extends Marker
                     int lv = 9 - (int)delta.y;
                     if (!player.isSpectator() && lv >= 0)
                     {
-                        player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 2, lv));
+                        player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 2, lv, false, false, true));
                     }
                 }
             }

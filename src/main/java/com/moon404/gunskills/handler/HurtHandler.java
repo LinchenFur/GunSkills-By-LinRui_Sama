@@ -33,7 +33,7 @@ public class HurtHandler
             else
             {
                 double duration = Math.sqrt(event.getAmount()) * 10;
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int)duration, 4));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, (int)duration, 4, false, false, true));
             }
             event.setCanceled(true);
             return;
@@ -56,7 +56,7 @@ public class HurtHandler
             ItemStack itemStack = from.getOffhandItem();
             if (itemStack.getItem() == GunSkillsItems.IRE.get() && !event.getEntity().hasEffect(MobEffects.GLOWING) && !from.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(from) == ClassType.SCOUT)
             {
-                event.getEntity().addEffect(new MobEffectInstance(MobEffects.GLOWING, 100));
+                event.getEntity().addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0, false, false, true));
                 if (event.getEntity() instanceof Player target)
                 {
                     GlowMessage.sendToTeam(from.getTeam(), target, 100);
@@ -70,7 +70,7 @@ public class HurtHandler
             ItemStack itemStack = player.getOffhandItem();
             if (!player.hasEffect(MobEffects.MOVEMENT_SPEED) && itemStack.getItem() == GunSkillsItems.FAST.get() && !player.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(player) == ClassType.ATTACK)
             {
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60, 2));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60, 2, false, false, true));
                 itemStack.setCount(itemStack.getCount() - 1);
             }
         }

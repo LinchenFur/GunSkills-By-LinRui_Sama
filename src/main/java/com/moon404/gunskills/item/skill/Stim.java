@@ -27,8 +27,8 @@ public class Stim extends SkillItem
         hp -= 4;
         if (hp < 1) hp = 1;
         player.setHealth(hp);
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2));
-        player.addEffect(new MobEffectInstance(MobEffects.JUMP, 100, 1));
+        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2, false, false, true));
+        player.addEffect(new MobEffectInstance(MobEffects.JUMP, 100, 1, false, false, true));
         return true;
     }
 }

@@ -24,7 +24,7 @@ public class Pearl extends SkillItem
     {
         if (ClassType.getClass(player) != this.classType) return false;
         if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4));
+        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4, false, false, true));
         PearlEntity pearl = new PearlEntity(player.level(), player);
         pearl.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1, 0);
         player.level().addFreshEntity(pearl);
