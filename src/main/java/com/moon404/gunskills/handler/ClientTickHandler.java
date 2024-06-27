@@ -21,6 +21,7 @@ import net.minecraft.world.phys.HitResult.Type;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
+import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -34,6 +35,7 @@ public class ClientTickHandler
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent event)
     {
+        if (event.phase != Phase.START) return;
         Minecraft mc = Minecraft.getInstance();
         int lastHolding = holding;
         holding = -1;
@@ -48,7 +50,7 @@ public class ClientTickHandler
         else duration = 0;
         if (duration > 5) WheelGui.activate(list);
 
-        if (pingcd == 0 && GunSkillsKeyMappings.PING_KEY.consumeClick())
+        if (pingcd == 0 && GunSkillsKeyMappings.PING_KEY.isDown())
         {
             pingcd = 20;
             ClientLevel level = mc.level;
