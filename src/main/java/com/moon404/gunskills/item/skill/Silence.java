@@ -27,7 +27,7 @@ public class Silence extends SkillItem
         silence.user = player;
         silence.setPos(player.getEyePosition());
         silence.setNoGravity(true);
-        silence.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2, 0);
+        silence.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(silence);
         return true;
     }

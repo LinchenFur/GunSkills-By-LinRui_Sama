@@ -26,7 +26,7 @@ public class Smoke extends SkillItem
         SmokeEntity smoke = new SmokeEntity(GunSkillsEntities.SMOKE.get(), player.level());
         smoke.setPos(player.getEyePosition());
         smoke.setNoGravity(true);
-        smoke.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2, 0);
+        smoke.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(smoke);
         return true;
     }

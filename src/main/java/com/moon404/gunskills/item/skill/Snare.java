@@ -27,7 +27,7 @@ public class Snare extends SkillItem
         snare.user = player;
         snare.setPos(player.getEyePosition());
         snare.setNoGravity(true);
-        snare.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2, 0);
+        snare.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(snare);
         return true;
     }

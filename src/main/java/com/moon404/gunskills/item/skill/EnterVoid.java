@@ -17,7 +17,8 @@ public class EnterVoid extends SkillItem
         super(properties, ClassType.ROGUE);
         tooltips.add(Component.literal("按 Q 扔出，立即生效"));
         tooltips.add(Component.literal("获得 5 秒隐身与失明"));
-        tooltips.add(Component.literal("切换物品会提前结束效果"));
+        tooltips.add(Component.literal("手持物品会提前结束效果"));
+        tooltips.add(Component.literal("被发光时也会提前结束效果"));
         tooltips.add(Component.literal("生效时如果背包有空位"));
         tooltips.add(Component.literal("会自动将手持物品放入背包"));
     }

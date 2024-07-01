@@ -27,7 +27,7 @@ public class Exhibit extends SkillItem
         exhibit.user = player;
         exhibit.setPos(player.getEyePosition());
         exhibit.setNoGravity(true);
-        exhibit.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2, 0);
+        exhibit.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(exhibit);
         return true;
     }

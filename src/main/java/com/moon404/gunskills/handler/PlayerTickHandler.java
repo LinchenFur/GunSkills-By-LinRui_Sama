@@ -28,6 +28,11 @@ public class PlayerTickHandler
                 player.removeEffect(MobEffects.INVISIBILITY);
                 player.removeEffect(MobEffects.BLINDNESS);
             }
+            else if (player.hasEffect(MobEffects.GLOWING))
+            {
+                player.removeEffect(MobEffects.INVISIBILITY);
+                player.removeEffect(MobEffects.BLINDNESS);
+            }
         }
     }
 }
