@@ -41,7 +41,7 @@ public class ExhibitEntity extends ThrowableItemProjectile
         List<Player> players = new ArrayList<>();
         for (Player player : this.level().players())
         {
-            if (!player.isSpectator() && this.distanceTo(player) <= 4)
+            if (!player.isSpectator() && this.distanceTo(player) <= 6)
             {
                 players.add(player);
             }
