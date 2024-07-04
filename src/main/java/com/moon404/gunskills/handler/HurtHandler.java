@@ -39,6 +39,12 @@ public class HurtHandler
             return;
         }
 
+        if (source.getEntity() instanceof Player a && event.getEntity() instanceof Player b && a.getTeam() == b.getTeam())
+        {
+            event.setCanceled(true);
+            return;
+        }
+
         if (source.getEntity() instanceof ServerPlayer from)
         {
             DamageInfo damage = new DamageInfo();
