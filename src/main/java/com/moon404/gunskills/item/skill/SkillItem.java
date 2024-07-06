@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
@@ -40,7 +41,25 @@ public class SkillItem extends Item
     {
         Level level = entity.level();
         if (level.isClientSide) return false;
-        if (entity.onGround()) return onLand(entity);
+        if (entity.onGround())
+        {
+            if (entity.getTags().contains("noeffect")) return false;
+            if (entity.getOwner() instanceof Player player)
+            {
+                if (ClassType.getClass(player) != this.classType) return false;
+                if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+            }
+            boolean flag = onLand(entity);
+            ItemStack itemStack = entity.getItem();
+            int count = itemStack.getCount();
+            if (count == 1) entity.kill();
+            else
+            {
+                itemStack.setCount(count - 1);
+                entity.addTag("noeffect");
+            }
+            return flag;
+        }
         return false;
     }
 
