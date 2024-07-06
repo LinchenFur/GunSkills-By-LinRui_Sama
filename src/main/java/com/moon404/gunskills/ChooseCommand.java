@@ -37,7 +37,7 @@ public class ChooseCommand
                     player.sendSystemMessage(Component.literal("无法使用此指令进入测试队伍").withStyle(Style.EMPTY.withColor(0xFF0000)));
                     return Command.SINGLE_SUCCESS;
                 }
-                if (team.getPlayers().size() >= 3)
+                if (team.getPlayers().size() >= getScore(scoreboard, "game_max_team_player", "global"))
                 {
                     player.sendSystemMessage(Component.literal("队伍人数已满，无法加入").withStyle(Style.EMPTY.withColor(0xFF0000)));
                     return Command.SINGLE_SUCCESS;
