@@ -30,7 +30,7 @@ public class SkillItem extends Item
     
     // 技能物品被扔下时触发
     // player 扔物品的玩家
-    // return 是否清除掉落物
+    // return 是否消耗
     public boolean onToss(Player player)
     {
         return false;
@@ -49,21 +49,23 @@ public class SkillItem extends Item
                 if (ClassType.getClass(player) != this.classType) return false;
                 if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
             }
-            boolean flag = onLand(entity);
-            ItemStack itemStack = entity.getItem();
-            int count = itemStack.getCount();
-            if (count == 1) entity.kill();
-            else
+            if (onLand(entity))
             {
-                itemStack.setCount(count - 1);
-                entity.addTag("noeffect");
+                ItemStack itemStack = entity.getItem();
+                int count = itemStack.getCount();
+                if (count == 1) entity.kill();
+                else
+                {
+                    itemStack.setCount(count - 1);
+                    entity.addTag("noeffect");
+                }
             }
-            return flag;
         }
         return false;
     }
 
-    // return true to skip any further update code.
+    // 技能物品落地时触发
+    // return 是否消耗
     public boolean onLand(ItemEntity entity)
     {
         return false;

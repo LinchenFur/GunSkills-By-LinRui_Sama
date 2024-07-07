@@ -1,5 +1,7 @@
 package com.moon404.gunskills.init;
 
+import java.util.Arrays;
+
 import org.apache.commons.lang3.ArrayUtils;
 
 import com.mojang.blaze3d.platform.InputConstants;
@@ -25,7 +27,8 @@ public class GunSkillsKeyMappings
         event.register(PING_KEY);
         Minecraft mc = Minecraft.getInstance();
         Options options = mc.options;
-        mc.options.keyMappings = ArrayUtils.addAll((KeyMapping[])(new KeyMapping[]{options.keyAttack, options.keyUse, options.keyUp, options.keyLeft, options.keyDown, options.keyRight, options.keyJump, options.keyShift, options.keySprint, options.keyDrop, options.keyInventory, options.keyChat, options.keyPlayerList, options.keyPickItem, options.keyCommand, options.keySocialInteractions, options.keyScreenshot, /*options.keyTogglePerspective,*/ options.keySmoothCamera, options.keyFullscreen, options.keySpectatorOutlines, options.keySwapOffhand, options.keySaveHotbarActivator, options.keyLoadHotbarActivator, options.keyAdvancements}), (KeyMapping[])options.keyHotbarSlots);
+        int index = ArrayUtils.indexOf(options.keyMappings, options.keyTogglePerspective);
+        options.keyMappings = ArrayUtils.addAll(Arrays.copyOfRange(options.keyMappings, 0, index), Arrays.copyOfRange(options.keyMappings, index + 1, options.keyMappings.length));
         options.keyTogglePerspective.setKey(InputConstants.UNKNOWN);
     }
 }

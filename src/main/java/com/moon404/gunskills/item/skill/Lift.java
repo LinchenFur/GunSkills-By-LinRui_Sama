@@ -23,6 +23,6 @@ public class Lift extends SkillItem
         LiftEntity lift = new LiftEntity(GunSkillsEntities.LIFT.get(), entity.level());
         lift.setPos(entity.position());
         entity.level().addFreshEntity(lift);
-        return false;
+        return true;
     }
 }

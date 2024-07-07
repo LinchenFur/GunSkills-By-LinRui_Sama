@@ -19,7 +19,7 @@ public class HealthBottleEntity extends Marker
     @Override
     public void tick()
     {
-        if (this.tickCount > 80)
+        if (this.tickCount > 40)
         {
             this.kill();
             return;
