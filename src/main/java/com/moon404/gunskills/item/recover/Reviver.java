@@ -1,13 +1,8 @@
 package com.moon404.gunskills.item.recover;
 
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.moon404.gunskills.Utils;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.ServerFunctionManager;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -46,16 +41,7 @@ public class Reviver extends RecoverItem
         {
             if (hasDeadTeammate(player, level))
             {
-                MinecraftServer server = player.getServer();
-                ServerFunctionManager manager = server.getFunctions();
-                CommandDispatcher<CommandSourceStack> dispatcher = manager.getDispatcher();
-                CommandSourceStack sourceStack = new CommandSourceStack(CommandSource.NULL, player.getPosition(1), player.getRotationVector(), player.serverLevel(), 2, null, null, server, null);
-                sourceStack = sourceStack.withEntity(player);
-                try {
-                    dispatcher.execute("function gunskills:revive", sourceStack);
-                } catch (CommandSyntaxException e) {
-                    e.printStackTrace();
-                }
+                Utils.invokeFunction(player, "gunskills:revive");
             }
             else
             {

@@ -17,11 +17,6 @@ import net.minecraft.world.scores.Scoreboard;
 
 public class ChooseCommand
 {
-    public static int getScore(Scoreboard scoreboard, String player, String objective)
-    {
-        return scoreboard.getOrCreatePlayerScore(player, scoreboard.getOrCreateObjective(objective)).getScore();
-    }
-
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher)
     {
         LiteralArgumentBuilder<CommandSourceStack> builder = Commands.literal("choose")
@@ -29,7 +24,7 @@ public class ChooseCommand
         {
             Player player = command.getSource().getPlayer();
             Scoreboard scoreboard = player.level().getScoreboard();
-            if (getScore(scoreboard, "game_start", "global") == 0)
+            if (Utils.getScore(scoreboard, "game_start", "global") == 0)
             {
                 PlayerTeam team = TeamArgument.getTeam(command, "choose");
                 if (team.getName().equals("test"))
@@ -37,7 +32,7 @@ public class ChooseCommand
                     player.sendSystemMessage(Component.literal("无法使用此指令进入测试队伍").withStyle(Style.EMPTY.withColor(0xFF0000)));
                     return Command.SINGLE_SUCCESS;
                 }
-                if (team.getPlayers().size() >= getScore(scoreboard, "game_max_team_player", "global"))
+                if (team.getPlayers().size() >= Utils.getScore(scoreboard, "game_max_team_player", "global"))
                 {
                     player.sendSystemMessage(Component.literal("队伍人数已满，无法加入").withStyle(Style.EMPTY.withColor(0xFF0000)));
                     return Command.SINGLE_SUCCESS;
@@ -57,7 +52,7 @@ public class ChooseCommand
         {
             Player player = command.getSource().getPlayer();
             Scoreboard scoreboard = player.level().getScoreboard();
-            if (getScore(scoreboard, "game_start", "global") == 0)
+            if (Utils.getScore(scoreboard, "game_start", "global") == 0)
             {
                 scoreboard.removePlayerFromTeam(player.getScoreboardName());
                 player.sendSystemMessage(Component.literal("您将在下一场游戏中观战"));

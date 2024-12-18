@@ -1,9 +1,11 @@
 package com.moon404.gunskills;
 
+import com.moon404.gunskills.handler.DeathHandler;
 import com.moon404.gunskills.handler.HurtHandler;
 import com.moon404.gunskills.handler.ItemTossHandler;
 import com.moon404.gunskills.handler.KnockbackHandler;
 import com.moon404.gunskills.handler.LoginHandler;
+import com.moon404.gunskills.handler.LogoutHandler;
 import com.moon404.gunskills.handler.PlayerTickHandler;
 import com.moon404.gunskills.init.GunSkillsConfigs;
 import com.moon404.gunskills.init.GunSkillsBlocks;
@@ -47,9 +49,11 @@ public class GunSkills
         GunSkillsEffects.REGISTER.register(modEventBus);
         GunSkillsEntities.REGISTER.register(modEventBus);
 
+        MinecraftForge.EVENT_BUS.register(DeathHandler.class);
         MinecraftForge.EVENT_BUS.register(HurtHandler.class);
         MinecraftForge.EVENT_BUS.register(ItemTossHandler.class);
         MinecraftForge.EVENT_BUS.register(LoginHandler.class);
+        MinecraftForge.EVENT_BUS.register(LogoutHandler.class);
         MinecraftForge.EVENT_BUS.register(PlayerTickHandler.class);
         MinecraftForge.EVENT_BUS.register(KnockbackHandler.class);
 
