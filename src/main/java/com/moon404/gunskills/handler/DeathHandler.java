@@ -11,10 +11,12 @@ public class DeathHandler
     @SubscribeEvent
     public static void onDeath(LivingDeathEvent event)
     {
-        if (event.getEntity() instanceof ServerPlayer death &&
-            event.getSource().getEntity() instanceof ServerPlayer killer)
+        if (event.getEntity() instanceof ServerPlayer death)
         {
-            Utils.invokeFunction(killer, "gunskills:kill");
+            if (event.getSource().getEntity() instanceof ServerPlayer killer)
+            {
+                Utils.invokeFunction(killer, "gunskills:kill");
+            }
             Utils.invokeFunction(death, "gunskills:death");
         }
     }

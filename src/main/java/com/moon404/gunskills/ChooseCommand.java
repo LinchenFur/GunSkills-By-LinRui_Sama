@@ -9,8 +9,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.TeamArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.scores.PlayerTeam;
 import net.minecraft.world.scores.Scoreboard;
@@ -39,8 +37,6 @@ public class ChooseCommand
                 }
                 scoreboard.addPlayerToTeam(player.getScoreboardName(), team);
                 player.sendSystemMessage(Component.literal("切换队伍成功，当前队伍：").append(team.getFormattedDisplayName()));
-                player.removeEffect(MobEffects.GLOWING);
-                player.removeEffect(MobEffects.INVISIBILITY);
             }
             else
             {
@@ -56,8 +52,6 @@ public class ChooseCommand
             {
                 scoreboard.removePlayerFromTeam(player.getScoreboardName());
                 player.sendSystemMessage(Component.literal("您将在下一场游戏中观战"));
-                player.addEffect(new MobEffectInstance(MobEffects.GLOWING, Integer.MAX_VALUE));
-                player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, Integer.MAX_VALUE));
             }
             else
             {
