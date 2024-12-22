@@ -39,12 +39,6 @@ public class HurtHandler
             return;
         }
 
-        if (event.getEntity() instanceof Player player && player.damageSources().outOfBorder() == event.getSource())
-        {
-            event.setAmount((float)player.level().getWorldBorder().getDamagePerBlock());
-            return;
-        }
-
         if (source.getEntity() instanceof Player a && event.getEntity() instanceof Player b && a.getTeam() == b.getTeam())
         {
             event.setCanceled(true);
