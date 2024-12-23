@@ -9,7 +9,8 @@
         "EntityMixin",
         "LivingEntityMixin",
         "PlayerMixin",
-        "PlayerModelMixin"
+        "PlayerModelMixin",
+        "SpreadPlayersMixin"
     ],
     "client": [
         "GlowingMixin",

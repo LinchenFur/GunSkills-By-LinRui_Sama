@@ -7,6 +7,7 @@ import com.moon404.gunskills.handler.KnockbackHandler;
 import com.moon404.gunskills.handler.LoginHandler;
 import com.moon404.gunskills.handler.LogoutHandler;
 import com.moon404.gunskills.handler.PlayerTickHandler;
+import com.moon404.gunskills.handler.ServerTickHandler;
 import com.moon404.gunskills.init.GunSkillsConfigs;
 import com.moon404.gunskills.init.GunSkillsBlocks;
 import com.moon404.gunskills.init.GunSkillsEffects;
@@ -56,6 +57,7 @@ public class GunSkills
         MinecraftForge.EVENT_BUS.register(LogoutHandler.class);
         MinecraftForge.EVENT_BUS.register(PlayerTickHandler.class);
         MinecraftForge.EVENT_BUS.register(KnockbackHandler.class);
+        MinecraftForge.EVENT_BUS.register(ServerTickHandler.class);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

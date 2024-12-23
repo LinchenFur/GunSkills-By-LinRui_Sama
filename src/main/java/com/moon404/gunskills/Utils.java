@@ -17,6 +17,11 @@ public class Utils
         return scoreboard.getOrCreatePlayerScore(player, scoreboard.getOrCreateObjective(objective)).getScore();
     }
 
+    public static void setScore(Scoreboard scoreboard, String player, String objective, int score)
+    {
+        scoreboard.getOrCreatePlayerScore(player, scoreboard.getOrCreateObjective(objective)).setScore(score);
+    }
+
     public static void invokeFunction(ServerPlayer player, String function)
     {
         MinecraftServer server = player.getServer();
