@@ -20,11 +20,17 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class GunSkillsKeyMappings
 {
     public static final KeyMapping PING_KEY = new KeyMapping("key.gunskills.ping", InputConstants.Type.MOUSE, 2, "key.categories.gameplay");
+    public static final KeyMapping DROPA_KEY = new KeyMapping("key.gunskills.dropa", InputConstants.KEY_X, "key.categories.gameplay");
+    public static final KeyMapping DROPB_KEY = new KeyMapping("key.gunskills.dropb", InputConstants.KEY_C, "key.categories.gameplay");
+    public static final KeyMapping DROPC_KEY = new KeyMapping("key.gunskills.dropc", InputConstants.KEY_V, "key.categories.gameplay");
 
     @SubscribeEvent
     public static void registerBindings(RegisterKeyMappingsEvent event)
     {
         event.register(PING_KEY);
+        event.register(DROPA_KEY);
+        event.register(DROPB_KEY);
+        event.register(DROPC_KEY);
         Minecraft mc = Minecraft.getInstance();
         Options options = mc.options;
         int index = ArrayUtils.indexOf(options.keyMappings, options.keyTogglePerspective);

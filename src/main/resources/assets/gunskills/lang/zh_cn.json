@@ -29,5 +29,8 @@
     "effect.gunskills.silence": "被沉默与禁疗",
     "itemGroup.gunskills": "GunSkills",
     "button.categories.gunskills": "GunSkills",
-    "key.gunskills.ping": "发送信号"
+    "key.gunskills.ping": "发送信号",
+    "key.gunskills.dropa": "快捷丢弃A",
+    "key.gunskills.dropb": "快捷丢弃B",
+    "key.gunskills.dropc": "快捷丢弃C"
 }

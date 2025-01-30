@@ -7,6 +7,8 @@ import com.moon404.gunskills.WheelGui;
 import com.moon404.gunskills.init.GunSkillsConfigs;
 import com.moon404.gunskills.init.GunSkillsKeyMappings;
 import com.moon404.gunskills.message.C2SPing;
+import com.moon404.gunskills.message.DropItemMessage;
+import com.moon404.gunskills.message.DropItemMessage.DropItem;
 import com.moon404.gunskills.struct.PingInfo;
 import com.moon404.gunskills.struct.WheelItemList;
 
@@ -71,5 +73,24 @@ public class ClientTickHandler
             }
         }
         if (pingcd > 0) pingcd--;
+
+        while (GunSkillsKeyMappings.DROPA_KEY.consumeClick())
+        {
+            DropItem info = new DropItem();
+            info.itemid = GunSkillsConfigs.DROPA_INDEX.get().intValue() - 1;
+            DropItemMessage.INSTANCE.sendToServer(info);
+        }
+        while (GunSkillsKeyMappings.DROPB_KEY.consumeClick())
+        {
+            DropItem info = new DropItem();
+            info.itemid = GunSkillsConfigs.DROPB_INDEX.get().intValue() - 1;
+            DropItemMessage.INSTANCE.sendToServer(info);
+        }
+        while (GunSkillsKeyMappings.DROPC_KEY.consumeClick())
+        {
+            DropItem info = new DropItem();
+            info.itemid = GunSkillsConfigs.DROPC_INDEX.get().intValue() - 1;
+            DropItemMessage.INSTANCE.sendToServer(info);
+        }
     }
 }
