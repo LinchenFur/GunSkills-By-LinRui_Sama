@@ -1,11 +1,15 @@
 package com.moon404.gunskills;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.moon404.gunskills.handler.DeathHandler;
 import com.moon404.gunskills.handler.HurtHandler;
 import com.moon404.gunskills.handler.ItemTossHandler;
 import com.moon404.gunskills.handler.KnockbackHandler;
 import com.moon404.gunskills.handler.LoginHandler;
 import com.moon404.gunskills.handler.LogoutHandler;
+import com.moon404.gunskills.handler.PlaySoundHandler;
 import com.moon404.gunskills.handler.PlayerTickHandler;
 import com.moon404.gunskills.handler.ServerTickHandler;
 import com.moon404.gunskills.init.GunSkillsConfigs;
@@ -38,6 +42,8 @@ public class GunSkills
     // Define mod id in a common place for everything to reference
     public static final String MODID = "gunskills";
 
+    public static final Logger LOGGER = LogManager.getLogger(MODID);
+
     public GunSkills()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -56,6 +62,7 @@ public class GunSkills
         MinecraftForge.EVENT_BUS.register(ItemTossHandler.class);
         MinecraftForge.EVENT_BUS.register(LoginHandler.class);
         MinecraftForge.EVENT_BUS.register(LogoutHandler.class);
+        MinecraftForge.EVENT_BUS.register(PlaySoundHandler.class);
         MinecraftForge.EVENT_BUS.register(PlayerTickHandler.class);
         MinecraftForge.EVENT_BUS.register(KnockbackHandler.class);
         MinecraftForge.EVENT_BUS.register(ServerTickHandler.class);
