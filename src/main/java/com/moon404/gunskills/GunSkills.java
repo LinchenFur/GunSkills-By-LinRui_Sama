@@ -20,6 +20,7 @@ import com.moon404.gunskills.init.GunSkillsItems;
 import com.moon404.gunskills.message.C2SPing;
 import com.moon404.gunskills.message.C2SSlide;
 import com.moon404.gunskills.message.ChangeItemMessage;
+import com.moon404.gunskills.message.DamageIndicatorMessage;
 import com.moon404.gunskills.message.DropItemMessage;
 import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.message.S2CPing;
@@ -82,6 +83,7 @@ public class GunSkills
             C2SSlide.register();
             S2CSlide.register();
             ChangeItemMessage.register();
+            DamageIndicatorMessage.register();
             DropItemMessage.register();
             WheelItemList.init();
             GlowMessage.register();

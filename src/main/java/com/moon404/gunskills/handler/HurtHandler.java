@@ -2,8 +2,10 @@ package com.moon404.gunskills.handler;
 
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.message.DamageIndicatorMessage;
 import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.message.ShowDamageMessage;
+import com.moon404.gunskills.message.DamageIndicatorMessage.DamageIndicator;
 import com.moon404.gunskills.struct.ClassType;
 import com.moon404.gunskills.struct.DamageInfo;
 
@@ -58,6 +60,14 @@ public class HurtHandler
             }
             from.giveExperiencePoints((int)(damage.amount * 100));
             ShowDamageMessage.INSTANCE.send(PacketDistributor.PLAYER.with(() -> {return from;}), damage);
+
+            if (event.getEntity() instanceof ServerPlayer target)
+            {
+                DamageIndicator indicator = new DamageIndicator();
+                indicator.x = (float)from.getX();
+                indicator.z = (float)from.getZ();
+                DamageIndicatorMessage.INSTANCE.send(PacketDistributor.PLAYER.with(() -> {return target;}), indicator);
+            }
 
             ItemStack itemStack = from.getOffhandItem();
             if (itemStack.getItem() == GunSkillsItems.IRE.get() && !event.getEntity().hasEffect(MobEffects.GLOWING) && !from.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(from) == ClassType.SCOUT)
