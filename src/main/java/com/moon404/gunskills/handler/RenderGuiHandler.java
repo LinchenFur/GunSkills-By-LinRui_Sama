@@ -4,12 +4,15 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import com.mojang.math.Axis;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.moon404.gunskills.GunSkills;
 import com.moon404.gunskills.message.DamageIndicatorMessage.DamageIndicator;
 import com.moon404.gunskills.struct.DamageInfo;
+import com.moon404.gunskills.struct.PingInfo;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec2;
@@ -27,6 +30,7 @@ public class RenderGuiHandler
     public static DamageIndicator lastIndicator = new DamageIndicator();
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(GunSkills.MODID, "textures/gui/indicator.png");
+    private static final ResourceLocation TEXTURE2 = new ResourceLocation(GunSkills.MODID, "textures/gui/ping.png");
 
     @SubscribeEvent
     public static void onRenderGui(CustomizeGuiOverlayEvent event)
@@ -83,6 +87,49 @@ public class RenderGuiHandler
         else
         {
             lastIndicator.startTick = 0;
+        }
+
+        for (PingInfo info : RenderLevelHandler.pingInfos)
+        {
+            Vec2 pos = info.screenPos;
+            if (info.depth <= 0) pos = pos.scale(-1);
+            int x = (int)pos.x;
+            int width = mc.getWindow().getGuiScaledWidth() - 8;
+            if (x < 8) x = 8;
+            else if (x > width) x = width;
+            int y = (int)pos.y;
+            int height = mc.getWindow().getGuiScaledHeight() - 8;
+            if (y < 8) y = 8;
+            else if (y > height) y = height;
+
+            pos = new Vec2(x, y);
+            Vec2 center = new Vec2((width + 8) / 2, (height + 8) / 2);
+            double alpha = Math.sqrt(center.distanceToSqr(pos)) / Math.sqrt(center.distanceToSqr(Vec2.ZERO));
+            if (alpha < 0.25) alpha = 0.25;
+            else if (alpha > 1) alpha = 1;
+            float scale = (float)Math.sqrt(alpha);
+
+            GuiGraphics guiGraphics = event.getGuiGraphics();
+            PoseStack poseStack = guiGraphics.pose();
+            poseStack.pushPose();
+            poseStack.translate(x, y, 0);
+            poseStack.scale(scale, scale, scale);
+            RenderSystem.enableBlend();
+            RenderSystem.defaultBlendFunc();
+            RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, (float)alpha);
+
+            guiGraphics.blit(TEXTURE2, -8, -8, 0, 0, 16, 16, 16, 16);
+            width = mc.font.width(info.sender);
+            height = mc.font.wordWrapHeight(info.sender, width);
+            guiGraphics.drawString(mc.font, info.sender, -width / 2, -height / 2 - 12, 0xFFFF00);
+            String s = (int)info.distance + "格";
+            width = mc.font.width(s);
+            height = mc.font.wordWrapHeight(s, width);
+            guiGraphics.drawString(mc.font, s, -width / 2, -height / 2 + 12, 0xFFFF00);
+
+            RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+            RenderSystem.disableBlend();
+            poseStack.popPose();
         }
     }
 }

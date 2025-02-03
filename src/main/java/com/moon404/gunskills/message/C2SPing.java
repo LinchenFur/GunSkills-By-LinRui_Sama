@@ -45,6 +45,7 @@ public class C2SPing
                 {
                     if (player.getTeam() == sender.getTeam())
                     {
+                        content.sender = sender.getScoreboardName();
                         S2CPing.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), content);
                     }
                 }

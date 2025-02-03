@@ -23,6 +23,7 @@ public class S2CPing
             buf.writeInt(content.y);
             buf.writeInt(content.z);
             buf.writeInt(content.t);
+            buf.writeUtf(content.sender);
         },
         (buf) ->
         {
@@ -31,6 +32,7 @@ public class S2CPing
             content.y = buf.readInt();
             content.z = buf.readInt();
             content.t = buf.readInt();
+            content.sender = buf.readUtf();
             return content;
         },
         (content, ctx) ->

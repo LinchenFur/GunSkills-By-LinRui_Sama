@@ -58,7 +58,7 @@ public class ClientTickHandler
             ClientLevel level = mc.level;
             LocalPlayer player = mc.player;
             Vec3 start = player.getEyePosition();
-            Vec3 look = player.getLookAngle().scale(100);
+            Vec3 look = player.getLookAngle().scale(200);
             Vec3 end = start.add(look);
             BlockHitResult hitResult = level.clip(new ClipContext(start, end, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
             if (hitResult.getType() == Type.BLOCK)
