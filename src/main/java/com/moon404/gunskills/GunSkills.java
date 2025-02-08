@@ -72,7 +72,8 @@ public class GunSkills
         MinecraftForge.EVENT_BUS.register(this);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GunSkillsConfigs.SPEC, "GunSkillsConfig.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GunSkillsConfigs.CLIENT_CONFIG, "GunSkills-Client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, GunSkillsConfigs.SERVER_CONFIG, "GunSkills-Server.toml");
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event)

@@ -13,7 +13,14 @@ public class PlaySoundHandler
         String name = event.getSound().get().getLocation().getPath();
         if (name.startsWith("block") && name.endsWith("step"))
         {
-            event.setNewVolume(event.getOriginalVolume() * GunSkillsConfigs.STEP_SOUND_MUL.get());
+            if (event.getLevel().isClientSide)
+            {
+                event.setNewVolume(event.getOriginalVolume() * GunSkillsConfigs.STEP_SOUND_MUL.get());
+            }
+            else
+            {
+                event.setNewVolume(GunSkillsConfigs.STEP_RANGE.get() / 16);
+            }
         }
     }
 }
