@@ -16,9 +16,10 @@ public class PlayerTickHandler
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent event)
     {
+        Player player = event.player;
+        player.setMaxUpStep(1.1F);
         if (event.phase != Phase.END) return;
         if (event.side != LogicalSide.SERVER) return;
-        Player player = event.player;
 
         if (player.hasEffect(MobEffects.BLINDNESS))
         {
