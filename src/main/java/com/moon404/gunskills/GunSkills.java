@@ -3,6 +3,7 @@ package com.moon404.gunskills;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.moon404.gunskills.events.PlayerEquipmentHandler;
 import com.moon404.gunskills.handler.DeathHandler;
 import com.moon404.gunskills.handler.HurtHandler;
 import com.moon404.gunskills.handler.ItemTossHandler;
@@ -25,7 +26,6 @@ import com.moon404.gunskills.message.DropItemMessage;
 import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.message.S2CPing;
 import com.moon404.gunskills.message.S2CSlide;
-import com.moon404.gunskills.message.ShowDamageMessage;
 import com.moon404.gunskills.struct.WheelItemList;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -80,7 +80,6 @@ public class GunSkills
     {
         event.enqueueWork(() ->
         {
-            ShowDamageMessage.register();
             C2SSlide.register();
             S2CSlide.register();
             ChangeItemMessage.register();

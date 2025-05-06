@@ -18,7 +18,7 @@ public class GunSkillsConfigs
 
     static
     {
-        RECOVER_INDEX = CLIENT_BUILDER.comment(" 回复品轮盘的快捷栏位（取值：0-9，0代表不启用此功能）").defineInRange("Recover hotbar", 4, 0, 9);
+        RECOVER_INDEX = CLIENT_BUILDER.comment(" 回复品轮盘的快捷栏位（取值：0-9，0代表不启用此功能）").defineInRange("Recover hotbar", 0, 0, 9);
         DROPA_INDEX = CLIENT_BUILDER.comment(" 快捷丢弃栏位A（取值：1-9）").defineInRange("dropa hotbar", 5, 1, 9);
         DROPB_INDEX = CLIENT_BUILDER.comment(" 快捷丢弃栏位B（取值：1-9）").defineInRange("dropb hotbar", 6, 1, 9);
         DROPC_INDEX = CLIENT_BUILDER.comment(" 快捷丢弃栏位C（取值：1-9）").defineInRange("dropc hotbar", 7, 1, 9);

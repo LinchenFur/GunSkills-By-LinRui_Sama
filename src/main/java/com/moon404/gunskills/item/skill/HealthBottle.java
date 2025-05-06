@@ -15,7 +15,7 @@ public class HealthBottle extends SkillItem
         super(properties, ClassType.SUPPORT);
         tooltips.add(Component.literal("按 Q 扔出，立即生效"));
         tooltips.add(Component.literal("在每个队友的脚下生成一个生命恢复区域"));
-        tooltips.add(Component.literal("其中的玩家每秒恢复 2 点生命，持续 2 秒"));
+        tooltips.add(Component.literal("其中的玩家每秒恢复 10 点生命，持续 2 秒"));
     }
 
     @Override

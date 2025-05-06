@@ -38,7 +38,7 @@ public class SilenceEntity extends ThrowSkillEntity
         for (Player player : lastTickPlayers)
         {
             player.addEffect(new MobEffectInstance(GunSkillsEffects.SILENCE.get(), 100, 0, false, false, true));
-            player.hurt(player.damageSources().playerAttack(this.user), 4);
+            player.hurt(player.damageSources().playerAttack(this.user), 10);
         }
         this.user.displayClientMessage(Component.literal("静默命中敌人数：" + lastTickPlayers.size()), true);
     }

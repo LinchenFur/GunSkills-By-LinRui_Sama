@@ -38,7 +38,7 @@ public class SnareEntity extends ThrowSkillEntity
         for (Player player : lastTickPlayers)
         {
             player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2, false, false, true));
-            player.hurt(player.damageSources().playerAttack(this.user), 4);
+            player.hurt(player.damageSources().playerAttack(this.user), 10);
         }
         this.user.displayClientMessage(Component.literal("电弧陷阱命中敌人数：" + lastTickPlayers.size()), true);
     }

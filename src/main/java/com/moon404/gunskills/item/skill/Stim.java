@@ -14,7 +14,7 @@ public class Stim extends SkillItem
     {
         super(properties, ClassType.ROGUE);
         tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("失去 4 点生命值（不会致死）"));
+        tooltips.add(Component.literal("失去 10 点生命值（不会致死）"));
         tooltips.add(Component.literal("获得 5 秒速度III与跳跃II"));
     }
 
@@ -24,7 +24,7 @@ public class Stim extends SkillItem
         if (ClassType.getClass(player) != this.classType) return false;
         if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
         float hp = player.getHealth();
-        hp -= 4;
+        hp -= 10;
         if (hp < 1) hp = 1;
         player.setHealth(hp);
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2, false, false, true));

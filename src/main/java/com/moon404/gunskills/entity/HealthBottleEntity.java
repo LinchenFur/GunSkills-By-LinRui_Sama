@@ -36,7 +36,7 @@ public class HealthBottleEntity extends Marker
                     if (this.distanceTo(player) <= 4)
                     {
                         float amount = player.getHealth();
-                        amount += 1;
+                        amount += 5;
                         if (amount > player.getMaxHealth())
                         {
                             amount = player.getMaxHealth();
