@@ -18,7 +18,7 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = GunSkills.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerEquipmentHandler {
 
-    // 进化规则配置
+    // 进化规则配置（保持不变）
     private static final List<EvolutionRule> EVOLUTION_RULES = Arrays.asList(
         new EvolutionRule(
             "mcapex:evo_shield_white",
@@ -39,13 +39,14 @@ public class PlayerEquipmentHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent event) {
+        // 原有逻辑保持不变
         if (event.phase != PlayerTickEvent.Phase.END) return;
         if (!(event.player instanceof ServerPlayer player)) return;
-
         checkAndEvolveArmor(player);
     }
 
     private static void checkAndEvolveArmor(ServerPlayer player) {
+        // 原有逻辑保持不变
         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
         if (chestplate.isEmpty()) return;
 
@@ -57,32 +58,36 @@ public class PlayerEquipmentHandler {
     }
 
     private static boolean tryEvolveArmor(ItemStack currentArmor, ServerPlayer player, EvolutionRule rule) {
-        // 验证当前护甲类型
+        // 验证当前护甲类型（保持不变）
         ResourceLocation currentId = ForgeRegistries.ITEMS.getKey(currentArmor.getItem());
         if (!currentId.toString().equals(rule.currentItemId)) return false;
 
-        // 检查等级条件
+        // 获取等级数据
         CompoundTag tag = currentArmor.getTag();
         if (tag == null || !tag.contains("level_count")) return false;
-        if (tag.getInt("level_count") < rule.requiredLevel) return false;
+        int currentLevel = tag.getInt("level_count");
+        
+        // 检查等级条件（新增等级差值计算）
+        if (currentLevel < rule.requiredLevel) return false;  // 必须达到最低要求
+        int excessLevel = Math.max(0, currentLevel - rule.requiredLevel);  // 关键修改点
 
-        // 创建新护甲（重置等级）
+        // 创建新护甲（携带超额等级）
         CompoundTag newTag = tag.copy();
-        newTag.putInt("level_count", 0); // 重置等级计数器
+        newTag.putInt("level_count", excessLevel);  // 修改点：使用差值
         
         ItemStack newArmor = new ItemStack(
             ForgeRegistries.ITEMS.getValue(new ResourceLocation(rule.nextItemId))
         );
         newArmor.setTag(newTag);
 
-        // 替换护甲并同步
+        // 替换护甲（保持不变）
         player.setItemSlot(EquipmentSlot.CHEST, newArmor);
         player.inventoryMenu.broadcastChanges();
         
         return true;
     }
 
-    // 进化规则内部类
+    // 进化规则内部类（保持不变）
     private static class EvolutionRule {
         public final String currentItemId;
         public final String nextItemId;

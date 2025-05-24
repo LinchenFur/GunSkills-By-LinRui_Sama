@@ -7,16 +7,11 @@ import java.util.List;
 import org.joml.Vector4f;
 
 import com.mojang.blaze3d.platform.Window;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moon404.gunskills.GunSkills;
 import com.moon404.gunskills.struct.PingInfo;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,11 +33,9 @@ public class RenderLevelHandler
         curTick = event.getRenderTick() + event.getPartialTick();
 
         Minecraft mc = Minecraft.getInstance();
-        VertexConsumer vertexConsumer = mc.renderBuffers().bufferSource().getBuffer(RenderType.lines());
         Camera camera = event.getCamera();
         Vec3 pos = camera.getPosition();
-                
-        PoseStack poseStack = event.getPoseStack();
+        
         Iterator<PingInfo> iterator = pingInfos.iterator();
         while (iterator.hasNext())
         {
@@ -52,21 +45,19 @@ public class RenderLevelHandler
                 iterator.remove();
                 continue;
             }
-            Vec3 target = new Vec3(pingInfo.x, pingInfo.y, pingInfo.z);
-            Vec3 start = target.add(pos.reverse());
-            Vec3 end = start.add(1, 1, 1);
-            AABB box = new AABB(start, end);
-            LevelRenderer.renderLineBox(poseStack, vertexConsumer, box, 1, 1, 1, 1);
 
-            // reference: https://github.com/LukenSkyne/Minecraft-Ping-Wheel/blob/1.20.1/common/src/main/java/nx/pingwheel/common/helper/MathUtils.java
-            target = new Vec3(pingInfo.x + 0.5, pingInfo.y + 0.5, pingInfo.z + 0.5);
-            start = target.add(pos.reverse());
+            // 保留屏幕坐标计算逻辑
+            Vec3 target = new Vec3(pingInfo.x + 0.5, pingInfo.y + 0.5, pingInfo.z + 0.5);
+            Vec3 start = target.subtract(pos);
             Window window = mc.getWindow();
-            Vector4f worldPosRel = new Vector4f(start.toVector3f(), 1f);
+            
+            Vector4f worldPosRel = new Vector4f((float)start.x, (float)start.y, (float)start.z, 1f);
             worldPosRel.mul(event.getPoseStack().last().pose());
             worldPosRel.mul(event.getProjectionMatrix());
+            
             float depth = worldPosRel.w;
             if (depth != 0) worldPosRel.div(depth);
+            
             pingInfo.depth = depth;
             pingInfo.screenPos = new Vec2(
                 window.getGuiScaledWidth() * (0.5f + worldPosRel.x * 0.5f),
